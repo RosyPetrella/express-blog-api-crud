@@ -1,33 +1,24 @@
 const express = require("express");
 const router = express.Router();
 const posts = require("..//immagini_e_posts/posts");
+const postController = require("../controller/post_controller");
 
 //index
-router.get("/", (req, res) => {
-  res.json(posts);
-});
+router.get("/", postController.index);
 
 //show
-router.get("/:id", (req, res) => {
-  res.send(`Show post with id: ${req.params.id}`);
-});
+router.get("/:id", postController.show);
 
 //store
-router.post("/", (req, res) => {
-  res.send(`Create a new post`);
-});
+router.post("/", postController.store);
 
 //update
-router.put("/:id", (req, res) => {
-  res.send(`Update post with id: ${req.params.id}`);
-});
+router.put("/:id", postController.update);
 
 //modify
-router.patch("/:id", (req, res) => {
-  res.send(`Modify post with id: ${req.params.id}`);
-});
+router.patch("/:id", postController.modify);
 
 //delete
-router.delete("/:id", (req, res) => {
-  res.send(`Delete post with id: ${req.params.id}`);
-});
+router.delete("/:id", postController.destroy);
+
+module.exports = router;
