@@ -47,8 +47,9 @@ function destroy(req, res) {
     });
   }
   posts.splice(posts.indexOf(post), 1);
-
-  res.json({ message: `Post with slug ${postSlug} deleted` });
+  console.log("Lista aggiornata:", posts);
+  //   res.json({ message: `Post with slug ${postSlug} deleted` });
+  res.status(204).send();
 }
 
 module.exports = {
