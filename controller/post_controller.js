@@ -1,3 +1,4 @@
+const { log } = require("console");
 const posts = require("../data/post_array");
 
 /*Index dovrà restituire la lista dei post in formato JSON
@@ -39,6 +40,7 @@ function destroy(req, res) {
   const postSlug = req.params.slug;
   const post = posts.find((post) => post.slug === postSlug);
   console.log(post);
+  console.log("======================");
 
   if (!post) {
     res.status(404);
