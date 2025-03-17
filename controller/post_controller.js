@@ -37,7 +37,21 @@ function store(req, res) {
 }
 
 function update(req, res) {
-  res.send(`Update post with id: ${req.params.id}`);
+  // res.send(`Update post with id: ${req.params.id}`);
+  const slug = req.params.slug;
+  const post = posts.find((post) => post.slug === slug);
+  if (!post) {
+    res.status(404);
+    return res.json({
+      error: "Not Found",
+    });
+  }
+  post.title = req.body.title;
+  post.image = req.body.image;
+  post.content = req.body.content;
+  post.tags = req.body.tags;
+  console.log(posts);
+  res.json(post);
 }
 
 function modify(req, res) {
