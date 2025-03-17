@@ -9,6 +9,7 @@ const app = express();
 const port = 3003;
 const postRouters = require("./routers/post_list");
 
+app.use(express.json());
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

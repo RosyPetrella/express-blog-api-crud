@@ -1,12 +1,6 @@
 const { log } = require("console");
 const posts = require("../data/post_array");
 
-/*Index dovrà restituire la lista dei post in formato JSON
-Show dovrà restituire un singolo post in formato JSON
-Destroy dovrà eliminare un singolo post dalla lista, 
-stampare nel terminale (console.log) la lista aggiornata,
-e rispondere con uno stato 204 e nessun contenuto.*/
-
 function index(req, res) {
   res.json(posts);
 }
@@ -25,7 +19,21 @@ function show(req, res) {
 }
 
 function store(req, res) {
-  res.send(`Create a new post`);
+  // res.send(`Create a new post`);
+
+  const newPost = {
+    slug: req.body.slug,
+    title: req.body.title,
+    image: req.body.image,
+    content: req.body.content,
+    tag: req.body.tags,
+  };
+
+  posts.push(newPost);
+  console.log(posts);
+
+  res.status(201);
+  res.json(newPost);
 }
 
 function update(req, res) {
